@@ -13,10 +13,15 @@ def obtener_usuarios_claves():
     
 def login_popup(usuario_entry,clave_entry):
     dicc= obtener_usuarios_claves()
-    resultado= messagebox.showerror(message="Algunos de los datos ingresados es incorrecto")
+    resultado= False
     for n in dicc:
         if usuario_entry== n and clave_entry==dicc[n]:
-            resultado= messagebox.showinfo(message="Usuario y Clave Correctos")
+            resultado= True
+    if resultado:
+        messagebox.showinfo(message="Usuario y Clave Correctos")
+    else:
+        messagebox.showerror(message="Algunos de los datos ingresados es incorrecto")
+        
     return resultado
 
 def creacion_ventana():
@@ -25,7 +30,7 @@ def creacion_ventana():
     raiz.title("Login Grupo II")
     raiz.resizable(0,0)
     raiz.geometry("300x130")
-    raiz.iconbitmap("Interfaz Grafica\mate.ico")
+    raiz.iconbitmap("Interfaz Grafica\PROYECTO GRUPAL\mate.ico")
     raiz.config(bg="lightblue")
 
     usuario_label= Label(raiz,text="Usuario Alumno: ")
@@ -44,5 +49,4 @@ def creacion_ventana():
     
     raiz.mainloop()
 
-    
 creacion_ventana()
